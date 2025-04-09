@@ -1,17 +1,22 @@
 <?php
 session_start();
 
+// Redireciona para login se o usuário não estiver logado
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit();
 }
 
+// Constante para identificar a assistente virtual
+define('IA_ID', 4);
+
+// Lista de médicos fictícios (normalmente viria do banco de dados)
 $medicos = [
     [
         'id' => 1,
         'nome' => 'Dra. Ana',
         'especialidade' => 'Cardiologia',
-        'avatar' => '/web/assets/img/ana.jpeg',
+        'avatar' => '/assets/img/ana.jpeg',
         'online' => true,
         'mensagens' => [
             ['remetente' => 'medico', 'texto' => 'Olá, como posso ajudar?', 'hora' => '10:30'],
@@ -21,9 +26,9 @@ $medicos = [
     ],
     [
         'id' => 2,
-        'nome' => 'Dra. camily',
+        'nome' => 'Dra. Camily',
         'especialidade' => 'Ortopedia',
-        'avatar' => '/web/assets/img/camily.jpeg',
+        'avatar' => '/assets/img/camily.jpeg',
         'online' => false,
         'mensagens' => [
             ['remetente' => 'medico', 'texto' => 'Bom dia, seu exame está pronto', 'hora' => '09:15'],
@@ -34,7 +39,7 @@ $medicos = [
         'id' => 3,
         'nome' => 'Dr. João',
         'especialidade' => 'Pediatria',
-        'avatar' => '/web/assets/img/joao.jpeg',
+        'avatar' => '/assets/img/joao.jpeg',
         'online' => true,
         'mensagens' => [
             ['remetente' => 'voce', 'texto' => 'Boa tarde, minha filha está com febre', 'hora' => '14:45'],
@@ -42,10 +47,10 @@ $medicos = [
         ]
     ],
     [
-        'id' => 4,
+        'id' => IA_ID,
         'nome' => 'Assistente Virtual',
         'especialidade' => 'IA de Saúde',
-        'avatar' => '/web/assets/img/ia.jpeg',
+        'avatar' => '/assets/img/ia.jpeg',
         'online' => true,
         'mensagens' => [
             ['remetente' => 'ia', 'texto' => 'Olá! Sou a assistente virtual da Saúde Conectada. Como posso ajudar?', 'hora' => '11:00'],
@@ -55,9 +60,12 @@ $medicos = [
     ]
 ];
 
-$chatAtivo = $_GET['medico'] ?? 4;
-$medicoAtivo = array_filter($medicos, fn($m) => $m['id'] == $chatAtivo);
-$medicoAtivo = reset($medicoAtivo);
+// Valida o ID do médico
+$chatAtivo = isset($_GET['medico']) && is_numeric($_GET['medico']) ? (int)$_GET['medico'] : IA_ID;
+
+// Busca o médico ativo
+$medicoAtivo = array_filter($medicos, fn($m) => $m['id'] === $chatAtivo);
+$medicoAtivo = reset($medicoAtivo) ?: $medicos[array_key_last($medicos)];
 
 $pageTitle = "Chat - Saúde Conectada";
 $additionalCSS = [
@@ -78,8 +86,9 @@ require_once __DIR__ . '/../includes/header.php';
         <div class="chat-contatos">
             <?php foreach ($medicos as $medico): ?>
                 <a href="chat.php?medico=<?= $medico['id'] ?>" 
-                   class="chat-contato <?= $medico['id'] == $chatAtivo ? 'active' : '' ?>">
-                    <img src="<?= $medico['avatar'] ?>" alt="<?= $medico['nome'] ?>" class="chat-avatar">
+                   class="chat-contato <?= $medico['id'] === $chatAtivo ? 'active' : '' ?>"
+                   data-medico-id="<?= $medico['id'] ?>">
+                    <img src="<?= $medico['avatar'] ?>" alt="<?= htmlspecialchars($medico['nome']) ?>" class="chat-avatar">
                     <div class="chat-info">
                         <h3><?= htmlspecialchars($medico['nome']) ?></h3>
                         <p><?= htmlspecialchars($medico['especialidade']) ?></p>
@@ -100,22 +109,23 @@ require_once __DIR__ . '/../includes/header.php';
     
     <section class="chat-main">
         <div class="chat-header">
-            <img src="<?= $medicoAtivo['avatar'] ?>" alt="<?= $medicoAtivo['nome'] ?>" class="chat-avatar">
+            <img src="<?= $medicoAtivo['avatar'] ?>" alt="<?= htmlspecialchars($medicoAtivo['nome']) ?>" class="chat-avatar">
             <div class="chat-header-info">
                 <h2><?= htmlspecialchars($medicoAtivo['nome']) ?></h2>
                 <p><?= htmlspecialchars($medicoAtivo['especialidade']) ?></p>
-                <?php if ($medicoAtivo['online']): ?>
-                    <span class="online">Online</span>
-                <?php else: ?>
-                    <span class="offline">Offline</span>
-                <?php endif; ?>
+                <span class="<?= $medicoAtivo['online'] ? 'online' : 'offline' ?>">
+                    <?= $medicoAtivo['online'] ? 'Online' : 'Offline' ?>
+                </span>
             </div>
             <div class="chat-actions">
-                <button aria-label="Ligar"><i class="fas fa-phone"></i></button>
-                <button aria-label="Vídeo chamada" onclick="window.location.href='videochamada.php'">
-    <i class="fas fa-video"></i>
-</button>
-                <button aria-label="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                <?php if ($medicoAtivo['id'] !== IA_ID): ?>
+                    <form action="videochat.php" method="get" style="display: inline;">
+                        <input type="hidden" name="medico_id" value="<?= $medicoAtivo['id'] ?>">
+                        <button class="video-call-btn" aria-label="Vídeo chamada" <?= !$medicoAtivo['online'] ? 'disabled' : '' ?>>
+                            <i class="fas fa-video"></i> Vídeo Chamada
+                        </button>
+                    </form>
+                <?php endif; ?>
             </div>
         </div>
         
@@ -142,18 +152,4 @@ require_once __DIR__ . '/../includes/header.php';
 require_once __DIR__ . '/../includes/footer.php';
 ?>
 
-<script src="/web/assets/js/chat.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const chatMessages = document.querySelector('.chat-messages');
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    
-    document.querySelector('.send-btn').addEventListener('click', function() {
-        const input = document.getElementById('mensagemInput');
-        if (input.value.trim() !== '') {
-            console.log('Mensagem enviada:', input.value);
-            input.value = '';
-        }
-    });
-});
-</script>
+<script src="/assets/js/chat.js"></script>
