@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: perfil.php');
     exit();
 }
-require_once __DIR__ . 'includes/header.php';
+require_once __DIR__ . '/../includes/header.php';
 ?>
 
 <body>

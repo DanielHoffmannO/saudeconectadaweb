@@ -1,4 +1,4 @@
-<?php require_once 'includes/header.php'; ?>
+<?php require_once __DIR__ . '/../includes/header.php'; ?>
 
 <section class="search">
     <h2 class="search__title">Encontre um Médico</h2>
@@ -36,4 +36,4 @@
     </p>
 </section>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/../includes/header.php'; ?>

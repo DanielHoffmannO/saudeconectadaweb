@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario'])) {
 
 $pageTitle = "Consultas - Saúde Conectada";
 
-require_once __DIR__ . 'includes/header.php';
+require_once __DIR__ . '/../includes/header.php';
 ?>
 
 <body class="consultas-page">
