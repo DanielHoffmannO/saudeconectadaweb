@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "nome": "Dra. Ana",
+    "crm": "123456",
+    "senha": "ana123",
+    "especialidade": "Cardiologia",
+    "avatar": "/assets/img/ana.jpeg",
+    "status": "online",
+    "ultimaMensagem": "Há quanto tempo sente isso?",
+    "mensagens": [
+      { "remetente": "medico", "texto": "Olá, como posso ajudar?", "hora": "10:30" },
+      { "remetente": "paciente", "texto": "Estou com dor no peito", "hora": "10:32" },
+      { "remetente": "medico", "texto": "Há quanto tempo sente isso?", "hora": "10:33" }
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Dra. Camily",
+    "crm": "654321",
+    "senha": "camily456",
+    "especialidade": "Ortopedia",
+    "avatar": "/assets/img/camily.jpeg",
+    "status": "offline",
+    "ultimaMensagem": "Obrigado, vou buscar hoje",
+    "mensagens": [
+      { "remetente": "medico", "texto": "Bom dia, seu exame está pronto", "hora": "09:15" },
+      { "remetente": "paciente", "texto": "Obrigado, vou buscar hoje", "hora": "09:20" }
+    ]
+  },
+  {
+    "id": 3,
+    "nome": "Dr. João",
+    "crm": "112233",
+    "senha": "joao789",
+    "especialidade": "Pediatria",
+    "avatar": "/assets/img/joao.jpeg",
+    "status": "online",
+    "ultimaMensagem": "Qual a temperatura?",
+    "mensagens": [
+      { "remetente": "paciente", "texto": "Boa tarde, minha filha está com febre", "hora": "14:45" },
+      { "remetente": "medico", "texto": "Qual a temperatura?", "hora": "14:47" }
+    ]
+  },
+  {
+    "id": "IA_1",
+    "nome": "Assistente Virtual",
+    "especialidade": "IA de Saúde",
+    "avatar": "/assets/img/ia.jpeg",
+    "status": "online",
+    "ultimaMensagem": "Posso te ajudar com isso. Qual especialidade você precisa?",
+    "mensagens": [
+      { "remetente": "ia", "texto": "Olá! Sou a assistente virtual da Saúde Conectada. Como posso ajudar?", "hora": "11:00" },
+      { "remetente": "paciente", "texto": "Preciso marcar uma consulta", "hora": "11:02" },
+      { "remetente": "ia", "texto": "Posso te ajudar com isso. Qual especialidade você precisa?", "hora": "11:02" }
+    ]
+  }
+]

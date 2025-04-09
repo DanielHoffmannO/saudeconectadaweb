@@ -14,7 +14,6 @@ class ChatApp {
     }
 
     initEvents() {
-        // Envio de mensagens
         if (this.sendBtn && this.messageInput) {
             this.sendBtn.addEventListener('click', () => this.sendMessage());
             this.messageInput.addEventListener('keypress', (e) => {
@@ -22,7 +21,6 @@ class ChatApp {
             });
         }
 
-        // Botões de vídeo chamada
         this.videoCallBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();

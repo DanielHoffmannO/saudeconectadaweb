@@ -1,69 +1,17 @@
 <?php
 session_start();
 
-// Redireciona para login se o usuário não estiver logado
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit();
 }
 
-// Constante para identificar a assistente virtual
 define('IA_ID', 4);
 
-// Lista de médicos fictícios (normalmente viria do banco de dados)
-$medicos = [
-    [
-        'id' => 1,
-        'nome' => 'Dra. Ana',
-        'especialidade' => 'Cardiologia',
-        'avatar' => '/assets/img/ana.jpeg',
-        'online' => true,
-        'mensagens' => [
-            ['remetente' => 'medico', 'texto' => 'Olá, como posso ajudar?', 'hora' => '10:30'],
-            ['remetente' => 'voce', 'texto' => 'Estou com dor no peito', 'hora' => '10:32'],
-            ['remetente' => 'medico', 'texto' => 'Há quanto tempo sente isso?', 'hora' => '10:33']
-        ]
-    ],
-    [
-        'id' => 2,
-        'nome' => 'Dra. Camily',
-        'especialidade' => 'Ortopedia',
-        'avatar' => '/assets/img/camily.jpeg',
-        'online' => false,
-        'mensagens' => [
-            ['remetente' => 'medico', 'texto' => 'Bom dia, seu exame está pronto', 'hora' => '09:15'],
-            ['remetente' => 'voce', 'texto' => 'Obrigado, vou buscar hoje', 'hora' => '09:20']
-        ]
-    ],
-    [
-        'id' => 3,
-        'nome' => 'Dr. João',
-        'especialidade' => 'Pediatria',
-        'avatar' => '/assets/img/joao.jpeg',
-        'online' => true,
-        'mensagens' => [
-            ['remetente' => 'voce', 'texto' => 'Boa tarde, minha filha está com febre', 'hora' => '14:45'],
-            ['remetente' => 'medico', 'texto' => 'Qual a temperatura?', 'hora' => '14:47']
-        ]
-    ],
-    [
-        'id' => IA_ID,
-        'nome' => 'Assistente Virtual',
-        'especialidade' => 'IA de Saúde',
-        'avatar' => '/assets/img/ia.jpeg',
-        'online' => true,
-        'mensagens' => [
-            ['remetente' => 'ia', 'texto' => 'Olá! Sou a assistente virtual da Saúde Conectada. Como posso ajudar?', 'hora' => '11:00'],
-            ['remetente' => 'voce', 'texto' => 'Preciso marcar uma consulta', 'hora' => '11:02'],
-            ['remetente' => 'ia', 'texto' => 'Posso te ajudar com isso. Qual especialidade você precisa?', 'hora' => '11:02']
-        ]
-    ]
-];
+$medicos = json_decode(file_get_contents(__DIR__ . '/../data/medicos.json'), true);
 
-// Valida o ID do médico
 $chatAtivo = isset($_GET['medico']) && is_numeric($_GET['medico']) ? (int)$_GET['medico'] : IA_ID;
 
-// Busca o médico ativo
 $medicoAtivo = array_filter($medicos, fn($m) => $m['id'] === $chatAtivo);
 $medicoAtivo = reset($medicoAtivo) ?: $medicos[array_key_last($medicos)];
 
@@ -118,15 +66,9 @@ require_once __DIR__ . '/../includes/header.php';
                 </span>
             </div>
             <div class="chat-actions">
-                <?php if ($medicoAtivo['id'] !== IA_ID): ?>
-                    <form action="videochat.php" method="get" style="display: inline;">
-                        <input type="hidden" name="medico_id" value="<?= $medicoAtivo['id'] ?>">
-                        <button class="video-call-btn" aria-label="Vídeo chamada" <?= !$medicoAtivo['online'] ? 'disabled' : '' ?>>
-                            <i class="fas fa-video"></i> Vídeo Chamada
-                        </button>
-                    </form>
-                <?php endif; ?>
-            </div>
+            <li class="nav__item"><a href="/videochat.php" class="nav__link">Ligar</a></li>
+</div>
+
         </div>
         
         <div class="chat-messages">

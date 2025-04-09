@@ -379,14 +379,6 @@ footer {
   transform: scale(1.1);
 }
 
-.chat-messages {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background: #e5ddd5;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDlFQ0U4QjY5NjUxMTFFODg2OUZEMjA2QzNEMjM5QzciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDlFQ0U4Qjc5NjUxMTFFODg2OUZEMjA2QzNEMjM5QzciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOUVDRThCNDk2NTExMUU4ODY5RkQyMDZDM0QyMzlDNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOUVDRThCNTk2NTExMUU4ODY5RkQyMDZDM0QyMzlDNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PvXGU/QAAABASURBVHjaYvz//z8DKYCJgVRAikJGRkYGXJYx4lXIyMiI1zJGRkZ8ljEyMuK1jJGRkQGnZUxMTPgtY2RkxGUZMzMzfsuAAgwAEGAAXH0Hw0Qb5JQAAAAASUVORK5CYII=');
-}
-
 .message {
   display: flex;
   margin-bottom: 15px;
@@ -409,18 +401,14 @@ footer {
   padding: 10px 15px;
   border-radius: 7px;
   position: relative;
-}
-
-.message.voce .message-content {
   background: #dcf8c6;
+  color: #333;
+
 }
 
 .message.medico .message-content {
-  background: #fff;
-}
-
-.message.ia .message-content {
-  background: #e3f2fd;
+  background: #f0f0f0;
+  color: #333;
 }
 
 .message-time {
@@ -1527,12 +1515,6 @@ footer {
     right: 0;
 }
 
-.chat-messages {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-}
-
 .chat-input {
     display: flex;
     padding: 10px;
@@ -1927,12 +1909,6 @@ footer {
   right: 0;
 }
 
-.chat-messages {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-}
-
 .chat-input {
   display: flex;
   padding: 10px;
@@ -2101,6 +2077,13 @@ footer {
   background-color: #cc0000;
 }
 
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #e5ddd5;
+}
+
 .videochat-container {
   position: fixed;
   right: 20px;
@@ -2162,6 +2145,82 @@ footer {
 
 .search, .about {
   transition: all 0.3s ease;
+}
+
+.results {
+  text-align: center;
+  padding: 1rem;
+}
+
+.doctors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.doctor-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.doctor-card:hover {
+  transform: scale(1.02);
+}
+
+.doctor-card__avatar {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.doctor-card__info {
+  padding: 1rem;
+}
+
+.doctor-card__name {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+}
+
+.doctor-card__specialty {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.doctor-card__status {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.online {
+  color: green;
+  font-weight: bold;
+}
+
+.offline {
+  color: gray;
+  font-weight: bold;
+}
+
+.doctor-card__chat-btn {
+  display: inline-block;
+  background: #0066cc;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.doctor-card__chat-btn:hover {
+  background: #004c99;
 }
 
 .about__title {

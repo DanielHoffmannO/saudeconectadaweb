@@ -157,7 +157,7 @@ require_once __DIR__ . '/../includes/header.php';
 
     <?php require_once __DIR__ . '/../includes/footer.php'; ?>
 
-    <script src="../js/prontuario.js"></script>
+    <script src="/assets/js/prontuario.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

@@ -6,78 +6,8 @@ if (!isset($_SESSION['usuario'])) {
     exit();
 }
 
-$exames = [
-    [
-        'id' => 1,
-        'tipo' => 'Hemograma Completo',
-        'data' => '15/05/2023',
-        'status' => 'disponivel',
-        'laboratorio' => 'LabMed Saúde',
-        'medico' => 'Dra. Carla Silva',
-        'resultado' => 'Todos os parâmetros dentro dos limites normais',
-        'anexos' => ['hemograma_20230515.pdf']
-    ],
-    [
-        'id' => 2,
-        'tipo' => 'Glicemia em Jejum',
-        'data' => '10/05/2023',
-        'status' => 'disponivel',
-        'laboratorio' => 'Diagnóstico Preciso',
-        'medico' => 'Dr. Marcos Lima',
-        'resultado' => '92 mg/dL (Valor de referência: 70-99 mg/dL)',
-        'anexos' => ['glicemia_20230510.pdf']
-    ],
-    [
-        'id' => 3,
-        'tipo' => 'Colesterol Total',
-        'data' => '10/05/2023',
-        'status' => 'disponivel',
-        'laboratorio' => 'Diagnóstico Preciso',
-        'medico' => 'Dr. Marcos Lima',
-        'resultado' => '185 mg/dL (Valor desejável: < 200 mg/dL)',
-        'anexos' => ['colesterol_20230510.pdf']
-    ],
-    [
-        'id' => 4,
-        'tipo' => 'Ultrassom Abdominal',
-        'data' => '05/05/2023',
-        'status' => 'disponivel',
-        'laboratorio' => 'Imagem Diagnóstica',
-        'medico' => 'Dr. André Rocha',
-        'resultado' => 'Exame sem alterações significativas',
-        'anexos' => ['usg_abdominal_20230505.pdf', 'laudo_usg_20230505.pdf']
-    ],
-    [
-        'id' => 5,
-        'tipo' => 'COVID-19 RT-PCR',
-        'data' => '20/04/2023',
-        'status' => 'disponivel',
-        'laboratorio' => 'LabVirus',
-        'medico' => 'Dra. Carla Silva',
-        'resultado' => 'Negativo para SARS-CoV-2',
-        'anexos' => ['covid_pcr_20230420.pdf']
-    ],
-    [
-        'id' => 6,
-        'tipo' => 'Ressonância Magnética - Joelho',
-        'data' => 'Agendado para 25/05/2023',
-        'status' => 'agendado',
-        'laboratorio' => 'Imagem Avançada',
-        'medico' => 'Dr. Marcos Lima',
-        'resultado' => 'Aguardando realização do exame',
-        'anexos' => []
-    ],
-    [
-        'id' => 7,
-        'tipo' => 'TSH e T4 Livre',
-        'data' => 'Aguardando coleta',
-        'status' => 'pendente',
-        'laboratorio' => 'LabMed Saúde',
-        'medico' => 'Dra. Carla Silva',
-        'resultado' => 'Aguardando realização do exame',
-        'anexos' => []
-    ]
-];
+$exames = json_decode(file_get_contents(__DIR__ . '/../data/exames.json'), true);
+
 $filtroStatus = $_GET['status'] ?? 'todos';
 
 require_once __DIR__ . '/../includes/header.php';
@@ -120,10 +50,10 @@ require_once __DIR__ . '/../includes/header.php';
                     </div>
                     
                     <div class="exame-acoes">
-                        <?php if (!empty($exame['anexos'])): ?>
-                            <div class="exame-anexos">
-                                <p><strong>Anexos:</strong></p>
-                                <?php foreach ($exame['anexos'] as $anexo): ?>
+                        <?php if (!empty($exame['assets'])): ?>
+                            <div class="exame-assets">
+                                <p><strong>assets:</strong></p>
+                                <?php foreach ($exame['assets'] as $anexo): ?>
                                     <a href="#" class="btn-anexo" data-exame="<?= $exame['id'] ?>" data-arquivo="<?= htmlspecialchars($anexo) ?>">
                                         <i class="fas fa-file-pdf"></i> <?= htmlspecialchars($anexo) ?>
                                     </a>
@@ -173,7 +103,6 @@ require_once __DIR__ . '/../includes/header.php';
 </div>
 
 <?php 
-// Inclui o rodapé
 require_once __DIR__ . '/../includes/footer.php';
 ?>
 

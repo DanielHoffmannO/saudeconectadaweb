@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "tipo": "Hemograma Completo",
+    "data": "15/05/2023",
+    "status": "disponivel",
+    "laboratorio": "LabMed Saúde",
+    "medico": "Dra. Carla Silva",
+    "resultado": "Todos os parâmetros dentro dos limites normais",
+    "assets": ["pdf/falso.pdf"]
+  },
+  {
+    "id": 2,
+    "tipo": "Glicemia em Jejum",
+    "data": "10/05/2023",
+    "status": "disponivel",
+    "laboratorio": "Diagnóstico Preciso",
+    "medico": "Dr. Marcos Lima",
+    "resultado": "92 mg/dL (Valor de referência: 70-99 mg/dL)",
+    "assets": ["pdf/falso.pdf"]
+  },
+  {
+    "id": 3,
+    "tipo": "Colesterol Total",
+    "data": "10/05/2023",
+    "status": "disponivel",
+    "laboratorio": "Diagnóstico Preciso",
+    "medico": "Dr. Marcos Lima",
+    "resultado": "185 mg/dL (Valor desejável: < 200 mg/dL)",
+    "assets": ["/pdf/falso.pdf"]
+  },
+  {
+    "id": 4,
+    "tipo": "Ultrassom Abdominal",
+    "data": "05/05/2023",
+    "status": "disponivel",
+    "laboratorio": "Imagem Diagnóstica",
+    "medico": "Dr. André Rocha",
+    "resultado": "Exame sem alterações significativas",
+    "assets": ["pdf/falso.pdf", "pdf/falso.pdf"]
+  },
+  {
+    "id": 5,
+    "tipo": "COVID-19 RT-PCR",
+    "data": "20/04/2023",
+    "status": "disponivel",
+    "laboratorio": "LabVirus",
+    "medico": "Dra. Carla Silva",
+    "resultado": "Negativo para SARS-CoV-2",
+    "assets": ["pdf/falso.pdf"]
+  },
+  {
+    "id": 6,
+    "tipo": "Ressonância Magnética - Joelho",
+    "data": "Agendado para 25/05/2023",
+    "status": "agendado",
+    "laboratorio": "Imagem Avançada",
+    "medico": "Dr. Marcos Lima",
+    "resultado": "Aguardando realização do exame",
+    "assets": []
+  },
+  {
+    "id": 7,
+    "tipo": "TSH e T4 Livre",
+    "data": "Aguardando coleta",
+    "status": "pendente",
+    "laboratorio": "LabMed Saúde",
+    "medico": "Dra. Carla Silva",
+    "resultado": "Aguardando realização do exame",
+    "assets": []
+  }
+]

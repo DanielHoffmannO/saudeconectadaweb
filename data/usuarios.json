@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "João da Silva",
+    "cpf": "12345678900",
+    "nascimento": "1985-05-15",
+    "email": "joao@email.com",
+    "celular": "(11) 98765-4321",
+    "cep": "01001-000",
+    "logradouro": "Praça da Sé",
+    "numero": "100",
+    "complemento": "Apto 101",
+    "bairro": "Sé",
+    "cidade": "São Paulo",
+    "uf": "SP",
+    "senha": "senha123"
+  },
+  {
+    "nome": "Maria Oliveira",
+    "cpf": "98765432100",
+    "nascimento": "1990-10-22",
+    "email": "maria@email.com",
+    "celular": "(21) 91234-5678",
+    "cep": "20040-002",
+    "logradouro": "Rua Uruguaiana",
+    "numero": "250",
+    "complemento": "Sala 305",
+    "bairro": "Centro",
+    "cidade": "Rio de Janeiro",
+    "uf": "RJ",
+    "senha": "maria@2025"
+  }
+]
