@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
-    header("Location: /saudeconectada/pages/login.php");
+    header("Location: login.php");
     exit();
 }
 
@@ -66,7 +66,7 @@ $additionalCSS = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
 
-require_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . 'includes/header.php';
 ?>
 
 <main class="notificacoes-container">

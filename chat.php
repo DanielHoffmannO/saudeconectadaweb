@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
-    header("Location: /saudeconectada/pages/login.php");
+    header("Location: login.php");
     exit();
 }
 
