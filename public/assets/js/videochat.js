@@ -25,7 +25,6 @@ async function start() {
         }
     };
 
-    // Gambi: criar e mostrar a oferta
     const offer = await peerConnection.createOffer();
     await peerConnection.setLocalDescription(offer);
 

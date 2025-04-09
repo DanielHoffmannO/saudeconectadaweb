@@ -6,7 +6,7 @@ if (!isset($_SESSION['usuario'])) {
     exit();
 }
 
-$medicoId = isset($_GET['medico_id']) ? (int)$_GET['medico_id'] : 0;
+$medicoId = 1;
 
 $pageTitle = "Chamada de Vídeo";
 $additionalCSS = [];
@@ -15,8 +15,6 @@ require_once __DIR__ . '/../includes/header.php';
 ?>
 
 <main style="padding: 20px;">
-    <h2>Chamada de Vídeo com Médico ID <?= $medicoId ?></h2>
-    <p>Apenas uma ligação simples, teste local P2P WebRTC.</p>
 
     <video id="localVideo" autoplay muted playsinline style="width: 45%; border: 2px solid #ccc;"></video>
     <video id="remoteVideo" autoplay playsinline style="width: 45%; border: 2px solid #ccc;"></video>
