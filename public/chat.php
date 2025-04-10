@@ -12,7 +12,7 @@ $medicos = json_decode(file_get_contents(__DIR__ . '/../data/medicos.json'), tru
 
 $chatAtivo = isset($_GET['medico']) && is_numeric($_GET['medico']) ? (int)$_GET['medico'] : IA_ID;
 
-$medicoAtivo = array_filter($medicos, fn($m) => $m['id'] === $chatAtivo);
+$medicoAtivo = array_filter($medicos, fn ($m) => $m['id'] === $chatAtivo);
 $medicoAtivo = reset($medicoAtivo) ?: $medicos[array_key_last($medicos)];
 
 $pageTitle = "Chat - Saúde Conectada";
@@ -90,7 +90,7 @@ require_once __DIR__ . '/../includes/header.php';
     </section>
 </main>
 
-<?php 
+<?php
 require_once __DIR__ . '/../includes/footer.php';
 ?>
 

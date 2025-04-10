@@ -79,13 +79,13 @@ require_once __DIR__ . '/../includes/header.php';
             <?php endif; ?>
         <?php endforeach; ?>
         
-        <?php 
-            $examesFiltrados = array_filter($exames, function($exame) use ($filtroStatus) {
+        <?php
+            $examesFiltrados = array_filter($exames, function ($exame) use ($filtroStatus) {
                 return $filtroStatus == 'todos' || $exame['status'] == $filtroStatus;
             });
-            
-            if (empty($examesFiltrados)): 
-        ?>
+
+if (empty($examesFiltrados)):
+    ?>
             <div class="exame-vazio">
                 <i class="fas fa-microscope"></i>
                 <p>Nenhum exame <?= $filtroStatus == 'todos' ? 'encontrado' : ($filtroStatus == 'disponivel' ? 'disponível' : ($filtroStatus == 'agendado' ? 'agendado' : 'pendente')) ?></p>
@@ -102,7 +102,7 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
 </div>
 
-<?php 
+<?php
 require_once __DIR__ . '/../includes/footer.php';
 ?>
 

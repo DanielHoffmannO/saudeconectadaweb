@@ -5,6 +5,17 @@
   font-family: Arial, sans-serif;
 }
 
+:root {
+  --primary-color: #2E8B57; /* Mantendo sua cor principal */
+  --secondary-color: #267347;
+  --background-dark: #36393f;
+  --background-darker: #2f3136;
+  --text-color: #ffffff;
+  --text-muted: #b9bbbe;
+  --danger-color: #ed4245;
+  --success-color: #3ba55c;
+}
+
 body {
   background-color: #f4f4f4;
   color: #333;
@@ -2448,3 +2459,4 @@ a:hover {
   background-color: #267347;
   transform: translateY(-5px);
 }
+

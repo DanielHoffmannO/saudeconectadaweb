@@ -1,8 +1,11 @@
 <?php
 session_start();
 
-function carregarUsuarios($arquivo) {
-    if (!file_exists($arquivo)) return [];
+function carregarUsuarios($arquivo)
+{
+    if (!file_exists($arquivo)) {
+        return [];
+    }
     $conteudo = file_get_contents($arquivo);
     return json_decode($conteudo, true);
 }
@@ -52,7 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body class="login-page">
     <div class="login-container">
         <h2 class="login-title">Login</h2>
-        <?php if (isset($erro)) echo "<p class='login-error'>$erro</p>"; ?>
+        <?php if (isset($erro)) {
+            echo "<p class='login-error'>$erro</p>";
+        } ?>
 
         <form method="POST" class="login-form" id="formLogin">
             <label for="tipoUsuario" class="login-label">Tipo de Usuário:</label>

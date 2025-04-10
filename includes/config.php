@@ -1,10 +1,12 @@
 <?php
+
 session_start();
 
 define('BASE_URL', 'http://localhost:8000/public');
 define('ROOT_PATH', realpath(dirname(__DIR__)));
 
-function sanitize($data) {
+function sanitize($data)
+{
     return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
 }
 
