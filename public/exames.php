@@ -54,9 +54,9 @@ require_once __DIR__ . '/../includes/header.php';
                             <div class="exame-assets">
                                 <p><strong>assets:</strong></p>
                                 <?php foreach ($exame['assets'] as $anexo): ?>
-                                    <a href="#" class="btn-anexo" data-exame="<?= $exame['id'] ?>" data-arquivo="<?= htmlspecialchars($anexo) ?>">
-                                        <i class="fas fa-file-pdf"></i> <?= htmlspecialchars(string: 'Anexo') ?>
-                                    </a>
+<a href="#" class="btn-anexo" data-exame="<?= $exame['id'] ?>" data-arquivo="<?= htmlspecialchars($anexo) ?>">
+    <i class="fas fa-file-pdf"></i> <?= htmlspecialchars(string: 'Anexo') ?>
+</a>
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
@@ -107,3 +107,6 @@ require_once __DIR__ . '/../includes/footer.php';
 ?>
 
 <script src="./assets/js/exames.js"></script>
+
+
+[Mon May 19 05:35:47 2025] 10.0.0.168:58942 [500]: GET /public/exames.php - syntax error, unexpected ':', expecting ')' in /home/hoffmann/project/saudeconectadaweb/public/exames.php on line 58
