@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     echo json_encode($roomData);
-    // Limpa após ler
     file_put_contents($roomFile, json_encode([]));
     exit;
 }

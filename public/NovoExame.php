@@ -1,39 +1,32 @@
 <?php
 session_start();
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit();
 }
 
-// Carrega os médicos e laboratórios disponíveis
 $medicos = json_decode(file_get_contents(__DIR__ . '/../data/medicos.json'), true);
 $laboratorios = json_decode(file_get_contents(__DIR__ . '/../data/laboratorios.json'), true);
 
-// Processa o formulário quando enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Validação dos campos obrigatórios
     if (empty($_POST['tipo_exame']) || empty($_POST['medico']) || empty($_POST['laboratorio'])) {
         die("Todos os campos obrigatórios devem ser preenchidos");
     }
 
-    // Carrega os exames existentes
     $arquivoExames = __DIR__ . '/../data/exames.json';
     $exames = file_exists($arquivoExames) ? json_decode(file_get_contents($arquivoExames), true) : [];
     
-    // Determina o próximo ID
     $proximoId = 1;
     if (!empty($exames)) {
         $ids = array_column($exames, 'id');
         $proximoId = max($ids) + 1;
     }
 
-    // Formata os dados conforme seu JSON existente
     $novoExame = [
         'id' => $proximoId,
         'tipo' => $_POST['tipo_exame'],
-        'data' => 'Aguardando agendamento', // Formato igual ao seu exame pendente
+        'data' => 'Aguardando agendamento',
         'status' => 'pendente',
         'laboratorio' => $_POST['laboratorio'],
         'medico' => $_POST['medico'],
@@ -41,18 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'assets' => []
     ];
 
-    // Adiciona observações se existirem
     if (!empty($_POST['observacoes'])) {
         $novoExame['observacoes'] = $_POST['observacoes'];
     }
 
-    // Adiciona o novo exame ao array
     $exames[] = $novoExame;
 
-    // Salva no arquivo JSON
     file_put_contents($arquivoExames, json_encode($exames, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
-    // Redireciona de volta para a lista de exames
     header("Location: exames.php");
     exit();
 }

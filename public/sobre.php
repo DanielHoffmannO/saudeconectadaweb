@@ -27,3 +27,4 @@
         <strong>autocuidado e o bem-estar</strong> de todos.
     </p>
 </section>
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>

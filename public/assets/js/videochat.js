@@ -32,7 +32,7 @@ async function start() {
     await peerConnection.setLocalDescription(offer);
     sendSignal({ type: 'offer', payload: offer });
 
-    pollSignals(); // inicia a escuta
+    pollSignals();
 }
 
 async function pollSignals() {
@@ -60,7 +60,7 @@ async function pollSignals() {
                 }
             }
         }
-    }, 1000); // a cada segundo
+    }, 1000);
 }
 
 async function sendSignal(message) {

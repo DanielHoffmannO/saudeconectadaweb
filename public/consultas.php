@@ -11,7 +11,6 @@ $additionalCSS = ['consultas.css'];
 
 require_once __DIR__ . '/../includes/header.php';
 
-// Carregar consultas existentes
 $consultasPath = __DIR__ . '/../data/consultas.json';
 $consultas = [];
 
@@ -19,16 +18,14 @@ if (file_exists($consultasPath)) {
     $consultas = json_decode(file_get_contents($consultasPath), true);
 }
 
-// Filtrar apenas consultas do usuário atual (simulação)
 $consultasUsuario = array_filter($consultas, function($consulta) {
-    return $consulta['paciente'] === 'Daniel Hoffmann'; // Na prática, usar $_SESSION['usuario']
+    return $consulta['paciente'] === 'Daniel Hoffmann';
 });
 
-// Processar formulário de nova consulta
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agendar'])) {
     $novaConsulta = [
         'id' => count($consultas) + 1,
-        'paciente' => 'Daniel Hoffmann', // Na prática, usar $_SESSION['usuario']['nome']
+        'paciente' => 'Daniel Hoffmann', 
         'medico' => $_POST['medico'],
         'especialidade' => $_POST['especialidade'],
         'data' => $_POST['data'],
@@ -40,12 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['agendar'])) {
     $consultas[] = $novaConsulta;
     file_put_contents($consultasPath, json_encode($consultas, JSON_PRETTY_PRINT));
     
-    // Recarregar a página para mostrar a nova consulta
     header("Location: consultas.php");
     exit();
 }
 
-// Encontrar consulta mais próxima
 $consultaProxima = null;
 $hoje = date('Y-m-d');
 foreach ($consultasUsuario as $consulta) {
@@ -56,7 +51,6 @@ foreach ($consultasUsuario as $consulta) {
     }
 }
 
-// Preparar dados para o calendário
 $eventosCalendario = [];
 foreach ($consultasUsuario as $consulta) {
     $eventosCalendario[] = [
@@ -78,7 +72,6 @@ foreach ($consultasUsuario as $consulta) {
 
 <main class="consultas-container">
     <div class="consultas-layout">
-        <!-- Painel esquerdo - Detalhes da consulta -->
         <div class="consulta-detalhes">
             <h2>Detalhes da Consulta</h2>
             
@@ -111,7 +104,6 @@ foreach ($consultasUsuario as $consulta) {
                 <?php endif; ?>
             </div>
             
-            <!-- Formulário de nova consulta -->
             <div id="form-nova-consulta" class="form-container" style="display: none;">
                 <h3>Agendar Nova Consulta</h3>
                 <form method="POST" action="consultas.php">
@@ -157,7 +149,6 @@ foreach ($consultasUsuario as $consulta) {
             </div>
         </div>
         
-        <!-- Calendário à direita -->
         <div class="calendario-container">
             <div id='calendar'></div>
         </div>
@@ -171,20 +162,17 @@ foreach ($consultasUsuario as $consulta) {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Mapeamento médico-especialidade
     const medicosEspecialidades = {
         'Dr. Carlos Silva': 'Cardiologia',
         'Dra. Ana Oliveira': 'Dermatologia',
         'Dr. Roberto Santos': 'Ortopedia'
     };
     
-    // Atualizar especialidade quando médico é selecionado
     document.getElementById('medico').addEventListener('change', function() {
         const medico = this.value;
         document.getElementById('especialidade-input').value = medicosEspecialidades[medico] || '';
     });
     
-    // Inicializar calendário
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -196,11 +184,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         events: <?= json_encode($eventosCalendario) ?>,
         eventClick: function(info) {
-            // Mostrar detalhes da consulta clicada
             const consulta = info.event;
             const props = consulta.extendedProps;
             
-            // Atualizar painel esquerdo com os detalhes
             document.getElementById('detalhes-consulta').innerHTML = `
                 <div class="consulta-info">
                     <h3>${props.medico} - ${props.especialidade}</h3>
@@ -221,12 +207,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             
-            // Esconder formulário se estiver visível
             document.getElementById('form-nova-consulta').style.display = 'none';
             document.getElementById('detalhes-consulta').style.display = 'block';
         },
         dateClick: function(info) {
-            // Ao clicar em uma data, mostrar formulário de nova consulta
             document.getElementById('form-nova-consulta').style.display = 'block';
             document.getElementById('detalhes-consulta').style.display = 'none';
             document.getElementById('data').value = info.dateStr;
@@ -235,13 +219,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     calendar.render();
     
-    // Botão Nova Consulta
     document.getElementById('btn-nova-consulta').addEventListener('click', function() {
         document.getElementById('form-nova-consulta').style.display = 'block';
         document.getElementById('detalhes-consulta').style.display = 'none';
     });
     
-    // Botão Cancelar no formulário
     document.getElementById('btn-cancelar').addEventListener('click', function() {
         document.getElementById('form-nova-consulta').style.display = 'none';
         document.getElementById('detalhes-consulta').style.display = 'block';
@@ -258,7 +240,6 @@ function cancelarConsulta(idConsulta) {
         cancelButtonText: 'Não'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Enviar requisição para cancelar a consulta
             fetch(`cancelar_consulta.php?id=${idConsulta}`, {
                 method: 'POST'
             })

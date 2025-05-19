@@ -8,7 +8,7 @@ return RectorConfig::configure()
         __DIR__ . '/src',
     ])
     ->withSets([
-        SetList::CODE_QUALITY,  // Melhora qualidade do código
-        SetList::DEAD_CODE,     // Remove código não utilizado
-        SetList::PSR_12,       // Aplica PSR-12
+        SetList::CODE_QUALITY, 
+        SetList::DEAD_CODE,    
+        SetList::PSR_12,       
     ]);

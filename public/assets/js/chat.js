@@ -29,7 +29,6 @@ class ChatApp {
             });
         });
 
-        // Contatos do chat
         this.chatContacts.forEach(contact => {
             contact.addEventListener('click', () => {
                 this.chatContacts.forEach(c => c.classList.remove('active'));
@@ -48,7 +47,6 @@ class ChatApp {
         const messageText = this.messageInput.value.trim();
         if (messageText === '') return;
 
-        // Simulação: adiciona a mensagem ao chat
         if (this.chatMessages) {
             const newMessage = document.createElement('div');
             newMessage.className = 'message voce';
@@ -68,7 +66,6 @@ class ChatApp {
     startVideoCall(medicoId) {
         if (!medicoId) return;
         
-        // Verifica se o médico está online
         const isOnline = document.querySelector(`.chat-contato[data-medico-id="${medicoId}"] .online`);
         if (!isOnline) {
             alert('O médico está offline no momento. Por favor, tente novamente mais tarde.');
@@ -79,7 +76,6 @@ class ChatApp {
     }
 }
 
-// Inicializa o chat quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {
     new ChatApp();
 });

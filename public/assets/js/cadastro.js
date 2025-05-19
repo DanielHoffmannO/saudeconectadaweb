@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Verifica se jQuery e jQuery Mask estão disponíveis
     if (typeof $ !== 'undefined' && $.fn.mask) {
-        // Máscaras de entrada
         $('#cpf').mask('000.000.000-00');
         $('#celular').mask('(00) 00000-0000');
         $('#cep').mask('00000-000');
@@ -9,13 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('jQuery Mask não está disponível');
     }
 
-    // Mostrar/ocultar senha
     document.getElementById('toggleSenha').addEventListener('click', function() {
         togglePasswordVisibility('senha', this);
     });
 
     document.getElementById('toggleConfirmarSenha').addEventListener('click', function() {
-        togglePasswordVisibility('confirmar_senha', this); // Corrigido o ID
+        togglePasswordVisibility('confirmar_senha', this);
     });
 
     function togglePasswordVisibility(fieldId, icon) {
@@ -34,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Elementos do formulário para busca de CEP
     const cepInput = document.getElementById('cep');
     const buscarCepBtn = document.getElementById('buscarCep');
     const logradouroInput = document.getElementById('logradouro');
@@ -42,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const cidadeInput = document.getElementById('cidade');
     const ufInput = document.getElementById('uf');
     
-    // Buscar CEP
     if (buscarCepBtn) {
         buscarCepBtn.addEventListener('click', buscarCep);
     }
@@ -107,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
         ufInput.value = '';
     }
 
-    // Validação do formulário
     const formCadastro = document.getElementById('formCadastro');
     if (formCadastro) {
         formCadastro.addEventListener('submit', function(e) {
