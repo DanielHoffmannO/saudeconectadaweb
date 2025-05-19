@@ -20,11 +20,9 @@ require_once __DIR__ . '/../includes/header.php';
             <img src="./assets/img/ana.jpeg" alt="Médico" class="medico-avatar">
             <div>
                 <strong>Dra. Ana</strong><br>
-                <span id="call-status">Conectando...</span>
             </div>
         </div>
         <div class="call-info">
-            <span id="call-timer">00:00</span>
         </div>
     </div>
 
