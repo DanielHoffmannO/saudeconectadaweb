@@ -2,7 +2,7 @@ let localStream;
 let peerConnection;
 const localVideo = document.getElementById('localVideo');
 const remoteVideo = document.getElementById('remoteVideo');
-const signalingUrl = "/signaling.php";
+const signalingUrl = "./signaling.php";
 
 const config = {
     iceServers: [{ urls: "stun:stun.l.google.com:19302" }]

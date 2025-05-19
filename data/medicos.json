@@ -43,7 +43,7 @@
     ]
   },
   {
-    "id": "IA_1",
+    "id": 4,
     "nome": "Assistente Virtual",
     "especialidade": "IA de Saúde",
     "avatar": "./assets/img/ia.jpeg",

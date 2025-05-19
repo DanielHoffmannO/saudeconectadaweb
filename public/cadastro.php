@@ -83,7 +83,7 @@ require_once __DIR__ . '/../includes/header.php';
             </div>
 
             <div class="form-actions">
-                <button type="submit">Salvar Alterações</button>
+                <a href="perfil.php" class="btn-novo-exame">Salvar Alterações</a>
                 <a href="perfil.php">Cancelar</a>
             </div>
         </form>

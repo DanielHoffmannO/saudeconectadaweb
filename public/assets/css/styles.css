@@ -2570,3 +2570,357 @@ a:hover {
 .fa-spinner {
     margin-right: 5px;
 }
+
+.consultas-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.consultas-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.consultas-calendar {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.consultas-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-section {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-section h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.agendar-form .form-group {
+    margin-bottom: 15px;
+}
+
+.agendar-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.agendar-form .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.proximas-consultas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.consulta-item {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.consulta-item p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.no-consultas {
+    color: #666;
+    text-align: center;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-small {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .consultas-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos Gerais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.consultas-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: calc(100vh - 120px);
+}
+
+/* Layout Principal */
+.consultas-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    height: 100%;
+}
+
+@media (max-width: 992px) {
+    .consultas-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Painel de Detalhes */
+.consulta-detalhes {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.consulta-detalhes h2 {
+    color: #2c3e50;
+    margin-top: 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.5rem;
+}
+
+/* Detalhes da Consulta */
+.detalhes-container {
+    margin-top: 20px;
+}
+
+.consulta-info h3 {
+    color: #3498db;
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+
+.consulta-info p {
+    margin: 12px 0;
+    line-height: 1.5;
+}
+
+.consulta-info strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Status Badge */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-badge.agendada {
+    background-color: #d4edff;
+    color: #004085;
+}
+
+.status-badge.confirmada {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-badge.pendente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.cancelada {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Botões de Ação */
+.consulta-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary, .btn-danger {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Sem Consultas */
+.sem-consulta {
+    text-align: center;
+    padding: 30px 20px;
+    color: #7f8c8d;
+}
+
+.sem-consulta p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* Formulário */
+.form-container {
+    margin-top: 20px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.form-container h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+/* Calendário */
+.calendario-container {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Adaptação para Mobile */
+@media (max-width: 768px) {
+    .consultas-container {
+        padding: 15px;
+    }
+    
+    .consulta-detalhes, .calendario-container {
+        padding: 15px;
+    }
+    
+    .consulta-actions, .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-primary, .btn-secondary, .btn-danger {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Ícones */
+.fas {
+    font-size: 0.9rem;
+}
