@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Saúde Conectada</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 
 
-                <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                <button type="login.php" href="login.php" class="btn-cadastrar">Cadastrar</button>
                 
                 <div class="login-link">
                     Já tem uma conta? <a href="login.php">Faça login</a>
@@ -137,8 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <?php include 'includes/footer.php'; ?>
     
-    <script src="js/cadastro.js"></script>
+    <script src="./assets/js/cadastro.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html> 
-

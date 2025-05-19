@@ -5,7 +5,7 @@
     "crm": "123456",
     "senha": "ana123",
     "especialidade": "Cardiologia",
-    "avatar": "/assets/img/ana.jpeg",
+    "avatar": "./assets/img/ana.jpeg",
     "status": "online",
     "ultimaMensagem": "Há quanto tempo sente isso?",
     "mensagens": [
@@ -20,7 +20,7 @@
     "crm": "654321",
     "senha": "camily456",
     "especialidade": "Ortopedia",
-    "avatar": "/assets/img/camily.jpeg",
+    "avatar": "./assets/img/camily.jpeg",
     "status": "offline",
     "ultimaMensagem": "Obrigado, vou buscar hoje",
     "mensagens": [
@@ -34,7 +34,7 @@
     "crm": "112233",
     "senha": "joao789",
     "especialidade": "Pediatria",
-    "avatar": "/assets/img/joao.jpeg",
+    "avatar": "./assets/img/joao.jpeg",
     "status": "online",
     "ultimaMensagem": "Qual a temperatura?",
     "mensagens": [
@@ -46,7 +46,7 @@
     "id": "IA_1",
     "nome": "Assistente Virtual",
     "especialidade": "IA de Saúde",
-    "avatar": "/assets/img/ia.jpeg",
+    "avatar": "./assets/img/ia.jpeg",
     "status": "online",
     "ultimaMensagem": "Posso te ajudar com isso. Qual especialidade você precisa?",
     "mensagens": [

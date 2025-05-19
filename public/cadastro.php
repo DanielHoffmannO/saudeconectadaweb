@@ -90,4 +90,5 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
 </main>
 
-<script src="../js/login.js"></script>
+<script src="./assets/js/login.js"></script>
+

@@ -66,7 +66,7 @@ require_once __DIR__ . '/../includes/header.php';
                 </span>
             </div>
             <div class="chat-actions">
-            <li class="nav__item"><a href="/videochat.php" class="nav__link">Ligar</a></li>
+            <li class="btn-novo-exame"><a href="./videochat.php" class="fas fa-plus">Ligar</a></li>
 </div>
 
         </div>

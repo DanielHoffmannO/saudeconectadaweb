@@ -17,7 +17,7 @@ require_once __DIR__ . '/../includes/header.php';
 
     <div class="video-header">
         <div class="medico-info">
-            <img src="/assets/img/ana.jpeg" alt="Médico" class="medico-avatar">
+            <img src="./assets/img/ana.jpeg" alt="Médico" class="medico-avatar">
             <div>
                 <strong>Dra. Ana</strong><br>
                 <span id="call-status">Conectando...</span>
@@ -50,8 +50,7 @@ require_once __DIR__ . '/../includes/header.php';
 
 </main>
 
-<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
-<script src="/assets/js/videochat.js"></script>
+<script src="./assets/js/videochat.js"></script>
 
 <?php
 require_once __DIR__ . '/../includes/footer.php';

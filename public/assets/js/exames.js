@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
           modalTitle.textContent = "Visualizar Anexo";
           modalBody.innerHTML = `
               <p>Abrindo o anexo: <strong>${arquivo}</strong></p>
-              <iframe src="/assets/${arquivo}" width="100%" height="500px" style="border: none;"></iframe>
+              <iframe src="./assets/${arquivo}" width="100%" height="500px" style="border: none;"></iframe>
           `;
           modal.style.display = "block";
       });

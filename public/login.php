@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body class="login-page">
     <div class="login-container">
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <form method="POST" class="login-form" id="formLogin">
             <label for="tipoUsuario" class="login-label">Tipo de Usuário:</label>
-            <select name="tipo" id="tipoUsuario" required class="login-select">
+            <select name="tipo" id="tipoUsuario" required class="login-select" onchange="atualizarCampoIdentificador()">
                 <option value="medico">Médico</option>
                 <option value="paciente">Paciente</option>
             </select>
@@ -75,11 +75,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="login-button">Entrar</button>
 
             <div class="cadastro-link">
-                <p>Não tem uma conta? <a href="cadastro.php">Cadastre-se</a></p>
+                <p>Não tem uma conta? <a href="./cadastrar.php">Cadastre-se</a></p>
             </div>
         </form>
     </div>
 
-    <script src="../assets/js/login.js"></script>
+    <script>
+        function atualizarCampoIdentificador() {
+            const tipoUsuario = document.getElementById('tipoUsuario').value;
+            const labelIdentificador = document.getElementById('labelIdentificador');
+            const campoIdentificador = document.getElementById('campoIdentificador');
+            
+            if (tipoUsuario === 'medico') {
+                labelIdentificador.textContent = 'CRM:';
+                campoIdentificador.placeholder = 'Digite seu CRM';
+            } else {
+                labelIdentificador.textContent = 'CPF:';
+                campoIdentificador.placeholder = 'Digite seu CPF';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            atualizarCampoIdentificador();
+        });
+    </script>
 </body>
 </html>

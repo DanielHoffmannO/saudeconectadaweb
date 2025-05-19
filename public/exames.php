@@ -17,7 +17,7 @@ require_once __DIR__ . '/../includes/header.php';
     <div class="exames-header">
         <h1>Meus Exames</h1>
         <div class="exames-acoes">
-            <a href="#" class="btn-novo-exame">
+            <a href="./NovoExame.php"" class="btn-novo-exame">
                 <i class="fas fa-plus"></i> Solicitar Novo Exame
             </a>
         </div>
@@ -55,7 +55,7 @@ require_once __DIR__ . '/../includes/header.php';
                                 <p><strong>assets:</strong></p>
                                 <?php foreach ($exame['assets'] as $anexo): ?>
                                     <a href="#" class="btn-anexo" data-exame="<?= $exame['id'] ?>" data-arquivo="<?= htmlspecialchars($anexo) ?>">
-                                        <i class="fas fa-file-pdf"></i> <?= htmlspecialchars($anexo) ?>
+                                        <i class="fas fa-file-pdf"></i> <?= htmlspecialchars(string: 'Anexo') ?>
                                     </a>
                                 <?php endforeach; ?>
                             </div>
@@ -106,4 +106,4 @@ if (empty($examesFiltrados)):
 require_once __DIR__ . '/../includes/footer.php';
 ?>
 
-<script src="/assets/js/exames.js"></script>
+<script src="./assets/js/exames.js"></script>

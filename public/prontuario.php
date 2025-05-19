@@ -10,9 +10,9 @@ if (!isset($_SESSION['usuario'])) {
 $pageTitle = "Prontuário Médico - Saúde Conectada";
 
 $paciente = [
-    'nome' => 'Carlos Alberto Mendonça',
-    'cpf' => '987.654.321-00',
-    'nascimento' => '1978-11-23',
+    'nome' => 'João da Silva',
+    'cpf' => '123.456.789-00',
+    'nascimento' => '1985-05-15',
     'sexo' => 'Masculino',
     'tipo_sanguineo' => 'A+',
     'altura' => '1,75m',
@@ -23,14 +23,14 @@ $paciente = [
 $historico = [
     [
         'data' => '2023-05-15',
-        'medico' => 'Dra. Ana Claudia Souza',
+        'medico' => 'Dra. Ana',
         'especialidade' => 'Cardiologia',
         'diagnostico' => 'Hipertensão arterial estágio 1',
         'prescricao' => 'Losartana 50mg 1x/dia, Medição diária de PA'
     ],
     [
         'data' => '2023-03-10',
-        'medico' => 'Dr. Marco Antônio Silva',
+        'medico' => 'Dr. Camily',
         'especialidade' => 'Ortopedia',
         'diagnostico' => 'Lombalgia mecânica',
         'prescricao' => 'Fisioterapia 2x/semana, Dipirona SOS'
