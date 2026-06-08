@@ -1,17 +1,21 @@
-FROM php:8.2-apache
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
 
-RUN apt-get update && apt-get install -y \
-    libzip-dev \
-    unzip \
-    && docker-php-ext-install pdo_mysql zip
+COPY SaudeConectada.sln .
+COPY src/SaudeConectada.Api/SaudeConectada.Api.csproj src/SaudeConectada.Api/
+COPY src/SaudeConectada.Service/SaudeConectada.Service.csproj src/SaudeConectada.Service/
+COPY src/SaudeConectada.Domain/SaudeConectada.Domain.csproj src/SaudeConectada.Domain/
+COPY src/SaudeConectada.Infra/SaudeConectada.Infra.csproj src/SaudeConectada.Infra/
+RUN dotnet restore
 
-RUN a2enmod rewrite ssl
+COPY . .
+RUN dotnet publish src/SaudeConectada.Api -c Release -o /app/publish
 
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish .
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+ENV ASPNETCORE_URLS=http://+:5000
+EXPOSE 5000
 
-COPY . /var/www/html/
-
-RUN if [ -f "composer.json" ]; then composer install --no-dev --optimize-autoloader; fi
+ENTRYPOINT ["dotnet", "SaudeConectada.Api.dll"]

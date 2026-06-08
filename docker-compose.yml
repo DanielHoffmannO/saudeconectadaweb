@@ -1,18 +1,19 @@
 version: '3.8'
 
 services:
-  app:
-    build: .
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+
+  web:
+    build:
+      context: ./web
     ports:
       - "8080:80"
-    volumes:
-      - ./src:/var/www/html
-      - ./docker/apache:/etc/apache2/sites-available
-    environment:
-      - DB_HOST=db
-      - DB_NAME=saudeconectada
-      - DB_USER=api_user
-      - DB_PASSWORD=api_password
     depends_on:
-      - db
-
+      - api

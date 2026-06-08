@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+*.user
+*.db
+*.suo
+*.cache
+data/
+node_modules/
+.env
+*.pem
+*.pub
