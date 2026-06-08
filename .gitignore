@@ -3,9 +3,10 @@ obj/
 .vs/
 *.user
 *.db
+*.db-shm
+*.db-wal
 *.suo
 *.cache
-data/
 node_modules/
 .env
 *.pem
