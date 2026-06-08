@@ -78,6 +78,8 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 
+builder.WebHost.UseUrls("http://0.0.0.0:5000");
+
 var app = builder.Build();
 
 // EnsureCreated + Seed
@@ -96,5 +98,4 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-app.Urls.Add("http://0.0.0.0:5000");
 app.Run();
