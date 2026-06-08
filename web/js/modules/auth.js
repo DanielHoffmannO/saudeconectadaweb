@@ -56,9 +56,9 @@ const Auth = (() => {
       if (e.target.id === 'login-form') {
         e.preventDefault();
         const email = document.getElementById('login-email').value;
-        const password = document.getElementById('login-password').value;
+        const senha = document.getElementById('login-password').value;
         try {
-          const data = await Api.post('/api/auth/login', { email, password });
+          const data = await Api.post('/api/auth/login', { email, senha });
           localStorage.setItem(CONFIG.TOKEN_KEY, data.token);
           Router.navigate('/consultas');
         } catch (err) {
@@ -70,9 +70,9 @@ const Auth = (() => {
         e.preventDefault();
         const nome = document.getElementById('reg-name').value;
         const email = document.getElementById('reg-email').value;
-        const password = document.getElementById('reg-password').value;
+        const senha = document.getElementById('reg-password').value;
         try {
-          await Api.post('/api/auth/register', { nome, email, password });
+          await Api.post('/api/auth/register', { nome, email, senha });
           Router.navigate('/login');
         } catch (err) {
           showAlert(err.message);
