@@ -5,7 +5,7 @@ COPY SaudeConectada.sln .
 COPY src/SaudeConectada.Api/SaudeConectada.Api.csproj src/SaudeConectada.Api/
 COPY src/SaudeConectada.Service/SaudeConectada.Service.csproj src/SaudeConectada.Service/
 COPY src/SaudeConectada.Domain/SaudeConectada.Domain.csproj src/SaudeConectada.Domain/
-COPY src/SaudeConectada.Infra/SaudeConectada.Infra.csproj src/SaudeConectada.Infra/
+COPY src/SaudeConectada.Persistence/SaudeConectada.Persistence.csproj src/SaudeConectada.Persistence/
 RUN dotnet restore
 
 COPY . .
