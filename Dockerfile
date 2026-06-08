@@ -6,6 +6,7 @@ COPY src/SaudeConectada.Api/SaudeConectada.Api.csproj src/SaudeConectada.Api/
 COPY src/SaudeConectada.Service/SaudeConectada.Service.csproj src/SaudeConectada.Service/
 COPY src/SaudeConectada.Domain/SaudeConectada.Domain.csproj src/SaudeConectada.Domain/
 COPY src/SaudeConectada.Persistence/SaudeConectada.Persistence.csproj src/SaudeConectada.Persistence/
+COPY tests/SaudeConectada.Tests/SaudeConectada.Tests.csproj tests/SaudeConectada.Tests/
 RUN dotnet restore
 
 COPY . .
