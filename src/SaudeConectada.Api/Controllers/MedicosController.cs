@@ -13,9 +13,15 @@ namespace SaudeConectada.Api.Controllers;
 public class MedicosController(IMedicoService medicoService) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<MedicoResponse>>> GetAll()
+    public async Task<ActionResult<IEnumerable<MedicoResponse>>> GetAll([FromQuery] string? q)
     {
         var medicos = await medicoService.GetAllAsync();
+        if (!string.IsNullOrWhiteSpace(q))
+        {
+            medicos = medicos.Where(m =>
+                m.Nome.Contains(q, StringComparison.OrdinalIgnoreCase) ||
+                m.Especialidade.ToString().Contains(q, StringComparison.OrdinalIgnoreCase));
+        }
         return Ok(medicos.Select(ToResponse));
     }
 
