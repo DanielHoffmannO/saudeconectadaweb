@@ -11,6 +11,13 @@ namespace SaudeConectada.Api.Controllers;
 [Authorize]
 public class ConsultasController(IConsultaService consultaService) : ControllerBase
 {
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<ConsultaResponse>>> GetAll()
+    {
+        var consultas = await consultaService.GetAllAsync();
+        return Ok(consultas.Select(ToResponse));
+    }
+
     [HttpPost]
     public async Task<ActionResult<ConsultaResponse>> Agendar(AgendarConsultaRequest request)
     {

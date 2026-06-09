@@ -59,4 +59,7 @@ public class ConsultaService : IConsultaService
 
     public async Task<IEnumerable<Consulta>> GetByPacienteAsync(int pacienteId) =>
         await _consultaRepository.GetByPacienteIdAsync(pacienteId);
+
+    public async Task<IEnumerable<Consulta>> GetAllAsync() =>
+        await _consultaRepository.GetAllAsync();
 }

@@ -27,7 +27,7 @@ const Router = (() => {
     }
 
     if (isAuthenticated() && publicRoutes.includes(path)) {
-      navigate('/consultas');
+      navigate('/sobre');
       return;
     }
 
@@ -37,7 +37,7 @@ const Router = (() => {
       const main = document.getElementById('main-content');
       if (main) main.innerHTML = await handler();
     } else {
-      navigate(isAuthenticated() ? '/consultas' : '/login');
+      navigate(isAuthenticated() ? '/sobre' : '/login');
     }
   }
 
