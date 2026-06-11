@@ -96,6 +96,13 @@ using (var scope = app.Services.CreateScope())
     DbSeed.Run(db);
 }
 
+app.MapGet("/health", () => Results.Ok(new 
+{
+    Status = "Healthy",
+    Timestamp = DateTime.UtcNow,
+    Version = "1.0.0"
+}));
+
 app.UseSwagger();
 app.UseSwaggerUI();
 

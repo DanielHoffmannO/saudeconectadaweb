@@ -2,31 +2,18 @@ version: '3.8'
 
 services:
   api:
-    build: .
-    container_name: saudeconectada_api
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Data Source=/app/data/saudeconectada.db
     volumes:
-      - sqlite_data:/app/data
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+      - ./data:/app/data
 
   web:
     build:
       context: ./web
-      dockerfile: Dockerfile
-    container_name: saudeconectada_web
     ports:
       - "8080:80"
     depends_on:
-      api:
-        condition: service_healthy
-
-volumes:
-  sqlite_data:
+      - api
