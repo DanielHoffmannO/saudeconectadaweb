@@ -11,3 +11,8 @@ node_modules/
 .env
 *.pem
 *.pub
+.vscode/
+tests/
+.git/
+.gitignore
+*.md
