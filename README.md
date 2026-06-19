@@ -75,7 +75,3 @@ src/
 tests/
 └── SaudeConectada.Tests         ← xUnit
 ```
-
-## Autor
-
-Daniel Hoffmann
