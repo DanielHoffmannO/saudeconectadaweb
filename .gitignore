@@ -12,7 +12,3 @@ node_modules/
 *.pem
 *.pub
 .vscode/
-tests/
-.git/
-.gitignore
-*.md
