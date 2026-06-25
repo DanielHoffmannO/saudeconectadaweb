@@ -1,6 +1,6 @@
-🌐 [English](README.en.md) | [Español](README.es.md)
+ðŸŒ [English](README.en.md) | [EspaÃ±ol](README.es.md)
 
-# 🏥 Saúde Conectada
+# ðŸ¥ SaÃºde Conectada
 
 [![.NET CI](https://github.com/DanielHoffmannO/SaudeConectada/actions/workflows/dotnet.yml/badge.svg)](https://github.com/DanielHoffmannO/SaudeConectada/actions/workflows/dotnet.yml)
 [![.NET 9](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
@@ -8,22 +8,22 @@
 [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> Plataforma de telemedicina completa com agendamento de consultas, gestão de pacientes e médicos, exames, notificações e mensagens em tempo real.
+> Plataforma de telemedicina completa com agendamento de consultas, gestÃ£o de pacientes e mÃ©dicos, exames, notificaÃ§Ãµes e mensagens em tempo real.
 
-## 🛠️ Tech Stack
+## ðŸ› ï¸ Tech Stack
 
 | Camada | Tecnologia |
 |--------|-----------|
 | Backend | .NET 9 / ASP.NET Core Web API |
 | ORM | Entity Framework Core |
 | Banco de Dados | SQLite |
-| Autenticação | JWT Bearer Token |
+| AutenticaÃ§Ã£o | JWT Bearer Token |
 | Frontend | Vanilla JS (SPA) |
 | Testes | xUnit |
 | CI/CD | GitHub Actions |
 | Container | Docker Compose |
 
-## 🚀 Como Rodar
+## ðŸš€ Como Rodar
 
 ### Com Docker (recomendado)
 
@@ -33,8 +33,8 @@ cd SaudeConectada
 docker-compose up --build
 ```
 
-- 🖥️ Frontend: http://localhost:8080
-- 📡 API/Swagger: http://localhost:5000/swagger
+- ðŸ–¥ï¸ Frontend: http://localhost:8080
+- ðŸ“¡ API/Swagger: http://localhost:5000/swagger
 
 ### Sem Docker
 
@@ -51,53 +51,53 @@ cd frontend
 npx serve -l 8080
 ```
 
-### 🔑 Credenciais de Teste
+### ðŸ”‘ Credenciais de Teste
 
 | Email | Senha |
 |-------|-------|
 | admin@saude.com | admin123 |
 
-> O seed automático cria médicos e pacientes de exemplo ao iniciar a aplicação.
+> O seed automÃ¡tico cria mÃ©dicos e pacientes de exemplo ao iniciar a aplicaÃ§Ã£o.
 
-## ✨ Features
+## âœ¨ Features
 
-- 📅 Agendamento de consultas online
-- 👨‍⚕️ Cadastro e gestão de médicos
-- 🧑‍🤝‍🧑 Cadastro e gestão de pacientes
-- 🔬 Gestão de exames
-- 💬 Sistema de mensagens
-- 🔔 Notificações
-- 🔐 Autenticação JWT
-- 🌱 Seed automático de dados
-- 🐳 Deploy com Docker Compose
-- ✅ Testes automatizados
-- 🔄 CI com GitHub Actions
+- ðŸ“… Agendamento de consultas online
+- ðŸ‘¨â€âš•ï¸ Cadastro e gestÃ£o de mÃ©dicos
+- ðŸ§‘â€ðŸ¤â€ðŸ§‘ Cadastro e gestÃ£o de pacientes
+- ðŸ”¬ GestÃ£o de exames
+- ðŸ’¬ Sistema de mensagens
+- ðŸ”” NotificaÃ§Ãµes
+- ðŸ” AutenticaÃ§Ã£o JWT
+- ðŸŒ± Seed automÃ¡tico de dados
+- ðŸ³ Deploy com Docker Compose
+- âœ… Testes automatizados
+- ðŸ”„ CI com GitHub Actions
 
-## 🏗️ Arquitetura
+## ðŸ—ï¸ Arquitetura
 
-Clean Architecture com separação em camadas:
+Clean Architecture com separaÃ§Ã£o em camadas:
 
 ```
 SaudeConectada/
-├── src/
-│   ├── SaudeConectada.Api/           # Controllers, Middlewares, Config
-│   ├── SaudeConectada.Domain/        # Entidades, Interfaces, Enums
-│   ├── SaudeConectada.Service/       # Regras de negócio, DTOs
-│   └── SaudeConectada.Persistence/   # DbContext, Repositórios, Migrations
-├── tests/
-│   └── SaudeConectada.Tests/         # Testes unitários (xUnit)
-├── frontend/                          # SPA Vanilla JS
-├── docker-compose.yml
-└── README.md
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ SaudeConectada.Api/           # Controllers, Middlewares, Config
+â”‚   â”œâ”€â”€ SaudeConectada.Domain/        # Entidades, Interfaces, Enums
+â”‚   â”œâ”€â”€ SaudeConectada.Service/       # Regras de negÃ³cio, DTOs
+â”‚   â””â”€â”€ SaudeConectada.Persistence/   # DbContext, RepositÃ³rios, Migrations
+â”œâ”€â”€ tests/
+â”‚   â””â”€â”€ SaudeConectada.Tests/         # Testes unitÃ¡rios (xUnit)
+â”œâ”€â”€ frontend/                          # SPA Vanilla JS
+â”œâ”€â”€ docker-compose.yml
+â””â”€â”€ README.md
 ```
 
-## 🧪 Testes
+## ðŸ§ª Testes
 
 ```bash
 dotnet test
 ```
 
-Cobertura de testes unitários com xUnit:
+Cobertura de testes unitÃ¡rios com xUnit:
 
 - `AuthService`
 - `PacienteService`
@@ -107,11 +107,11 @@ Cobertura de testes unitários com xUnit:
 - `NotificacaoService`
 - `MensagemService`
 
-## 📄 Licença
+## ðŸ“„ LicenÃ§a
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto estÃ¡ sob a licenÃ§a MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 👤 Autor
+## ðŸ‘¤ Autor
 
 **Daniel Hoffmann**
 
