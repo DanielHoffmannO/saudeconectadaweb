@@ -1,78 +1,119 @@
 🌐 [English](README.en.md) | [Español](README.es.md)
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![.NET](https://img.shields.io/badge/.NET-9.0-purple)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Build](https://img.shields.io/badge/build-passing-brightgreen)
-![Tests](https://img.shields.io/badge/tests-95%25-success)
+# 🏥 Saúde Conectada
 
-## 📄 Licença
+[![.NET CI](https://github.com/DanielHoffmannO/SaudeConectada/actions/workflows/dotnet.yml/badge.svg)](https://github.com/DanielHoffmannO/SaudeConectada/actions/workflows/dotnet.yml)
+[![.NET 9](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+> Plataforma de telemedicina completa com agendamento de consultas, gestão de pacientes e médicos, exames, notificações e mensagens em tempo real.
 
-## 💡 Sobre o Projeto
+## 🛠️ Tech Stack
 
-**Saúde Conectada** é uma plataforma moderna de telemedicina que facilita o agendamento 
-de consultas online entre pacientes e médicos. O sistema oferece:
+| Camada | Tecnologia |
+|--------|-----------|
+| Backend | .NET 9 / ASP.NET Core Web API |
+| ORM | Entity Framework Core |
+| Banco de Dados | SQLite |
+| Autenticação | JWT Bearer Token |
+| Frontend | Vanilla JS (SPA) |
+| Testes | xUnit |
+| CI/CD | GitHub Actions |
+| Container | Docker Compose |
 
-- ✅ Cadastro e gestão de pacientes
-- ✅ Agenda de médicos com horários disponíveis
-- ✅ Agendamento e cancelamento de consultas
-- ✅ Autenticação segura com JWT
-- ✅ Interface responsiva e amigável
-- ✅ Dashboard administrativo
+## 🚀 Como Rodar
 
-## 📋 Pré-requisitos
-
-- Docker 20.10+ ou .NET 9 SDK
-- Git
-
-## Tech Stack
-
-- .NET 9 / ASP.NET Core Web API
-- Entity Framework Core + SQLite
-- JWT Authentication
-- Vanilla JS (SPA)
-- Docker
-
-## Como rodar
+### Com Docker (recomendado)
 
 ```bash
+git clone https://github.com/DanielHoffmannO/SaudeConectada.git
+cd SaudeConectada
 docker-compose up --build
 ```
 
-- **Front-end:** http://localhost:8080
-- **API (Swagger):** http://localhost:5000/swagger
+- 🖥️ Frontend: http://localhost:8080
+- 📡 API/Swagger: http://localhost:5000/swagger
 
-## Sem Docker
+### Sem Docker
 
 ```bash
+git clone https://github.com/DanielHoffmannO/SaudeConectada.git
+cd SaudeConectada
+
+# Backend
+dotnet restore
 dotnet run --project src/SaudeConectada.Api
+
+# Frontend (em outro terminal)
+cd frontend
+npx serve -l 8080
 ```
 
-## Testes
+### 🔑 Credenciais de Teste
+
+| Email | Senha |
+|-------|-------|
+| admin@saude.com | admin123 |
+
+> O seed automático cria médicos e pacientes de exemplo ao iniciar a aplicação.
+
+## ✨ Features
+
+- 📅 Agendamento de consultas online
+- 👨‍⚕️ Cadastro e gestão de médicos
+- 🧑‍🤝‍🧑 Cadastro e gestão de pacientes
+- 🔬 Gestão de exames
+- 💬 Sistema de mensagens
+- 🔔 Notificações
+- 🔐 Autenticação JWT
+- 🌱 Seed automático de dados
+- 🐳 Deploy com Docker Compose
+- ✅ Testes automatizados
+- 🔄 CI com GitHub Actions
+
+## 🏗️ Arquitetura
+
+Clean Architecture com separação em camadas:
+
+```
+SaudeConectada/
+├── src/
+│   ├── SaudeConectada.Api/           # Controllers, Middlewares, Config
+│   ├── SaudeConectada.Domain/        # Entidades, Interfaces, Enums
+│   ├── SaudeConectada.Service/       # Regras de negócio, DTOs
+│   └── SaudeConectada.Persistence/   # DbContext, Repositórios, Migrations
+├── tests/
+│   └── SaudeConectada.Tests/         # Testes unitários (xUnit)
+├── frontend/                          # SPA Vanilla JS
+├── docker-compose.yml
+└── README.md
+```
+
+## 🧪 Testes
 
 ```bash
 dotnet test
 ```
 
-## Dados de teste (seed automático)
+Cobertura de testes unitários com xUnit:
 
-| Tipo | Email | Senha |
-|------|-------|-------|
-| Admin | admin@saude.com | admin123 |
+- `AuthService`
+- `PacienteService`
+- `MedicoService`
+- `ConsultaService`
+- `ExameService`
+- `NotificacaoService`
+- `MensagemService`
 
-Médicos e pacientes são criados automaticamente no primeiro start.
+## 📄 Licença
 
-## Arquitetura
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-```
-src/
-├── SaudeConectada.Domain        ← Entidades, DTOs, Interfaces (DDD)
-├── SaudeConectada.Service       ← Regras de negócio
-├── SaudeConectada.Persistence   ← EF Core, Repositories
-└── SaudeConectada.Api           ← Controllers, JWT, Swagger
-tests/
-└── SaudeConectada.Tests         ← xUnit
-```
+## 👤 Autor
+
+**Daniel Hoffmann**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/danielhoffmanno/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/DanielHoffmannO)
