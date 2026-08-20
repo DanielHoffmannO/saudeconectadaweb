@@ -6,14 +6,18 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "7000:5000"
     volumes:
       - ./data:/app/data
+    environment:
+      Jwt__Key: "${JWT_KEY}"
+    restart: unless-stopped
 
   web:
     build:
       context: ./web
     ports:
-      - "8080:80"
+      - "7002:80"
     depends_on:
       - api
+    restart: unless-stopped
